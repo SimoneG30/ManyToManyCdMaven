@@ -3,8 +3,10 @@ package it.prova.manytomanycdmaven.dao.cd;
 import java.util.List;
 
 import javax.persistence.EntityManager;
+import javax.persistence.TypedQuery;
 
 import it.prova.manytomanycdmaven.model.Cd;
+import it.prova.manytomanycdmaven.model.Genere;
 
 public class CdDAOImpl implements CdDAO {
 	
@@ -47,6 +49,13 @@ public class CdDAOImpl implements CdDAO {
 	@Override
 	public void setEntityManager(EntityManager entityManager) {
 		this.entityManager = entityManager;
+	}
+
+	@Override
+	public List<Cd> findAllByGenere(Genere genereInput) {
+		TypedQuery<Cd> query = entityManager.createQuery("select cd FROM Cd cd join cd.generi g where g = :genere",Cd.class);
+		query.setParameter("genere", genereInput);
+		return query.getResultList();
 	}
 
 }

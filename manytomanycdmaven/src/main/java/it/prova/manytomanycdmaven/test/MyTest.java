@@ -163,14 +163,37 @@ public class MyTest {
 //			if(cdServiceInstance.caricaSingoloElemento(cdNuovoDaInserire.getId()) != null)
 //				System.out.println("Nuovo CD inserito: "+cdNuovoDaInserire);
 
-			
+//			System.out.println("\n AGGIUNGI CD \n");
 //			Cd cdDaDb = cdServiceInstance.caricaSingoloElemento(1L);
-//
 //			Genere genereDaDb = genereServiceInstance.listAll().stream().findFirst().orElse(null);
 //			if (cdDaDb != null && genereDaDb != null) {
 //				genereServiceInstance.aggiungiCd(genereDaDb, cdDaDb);
 //			}
 			
+//			System.out.println("\n DELETE GENERE \n");
+//			Long idGenereDaEliminare = 3L;
+//			Genere genereCaricato = genereServiceInstance.caricaSingoloElemento(idGenereDaEliminare);
+//			if(genereCaricato != null) {
+//				System.out.println("Genere caricato: "+genereCaricato);
+//				genereServiceInstance.rimuovi(genereCaricato);
+//				System.out.println("Rimozione Genere avvenuta con successo");
+//			} else {
+//				System.out.println("Nessun Genere trovato");
+//			}
+			
+//			System.out.println("\n DELETE CD \n");
+//			Long idCdDaEliminare = 3L;
+//			Cd cdCaricato = cdServiceInstance.caricaSingoloElemento(idCdDaEliminare);
+//			if(cdCaricato != null) {
+//				System.out.println("Cd caricato: "+cdCaricato);
+//				cdServiceInstance.rimuovi(cdCaricato);
+//				System.out.println("Rimozione CD avvenuta con successo");
+//			} else {
+//				System.out.println("Nessun CD trovato");
+//			}
+			
+			
+
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {

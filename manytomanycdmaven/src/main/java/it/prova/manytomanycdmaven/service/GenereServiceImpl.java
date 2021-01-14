@@ -4,9 +4,8 @@ import java.util.List;
 
 import javax.persistence.EntityManager;
 
+
 import it.prova.manytomanycdmaven.dao.EntityManagerUtil;
-import it.prova.manytomanycdmaven.dao.MyDaoFactory;
-import it.prova.manytomanycdmaven.dao.cd.CdDAO;
 import it.prova.manytomanycdmaven.dao.genere.GenereDAO;
 import it.prova.manytomanycdmaven.model.Cd;
 import it.prova.manytomanycdmaven.model.Genere;
@@ -14,6 +13,7 @@ import it.prova.manytomanycdmaven.model.Genere;
 public class GenereServiceImpl implements GenereService {
 
 	private GenereDAO genereDAO;
+	private CdService cdServiceInstance = MyServiceFactory.getCdServiceInstance(); 
 
 	@Override
 	public List<Genere> listAll() throws Exception {
@@ -106,13 +106,18 @@ public class GenereServiceImpl implements GenereService {
 		EntityManager entityManager = EntityManagerUtil.getEntityManager();
 
 		try {
-			// questo è come il MyConnection.getConnection()
 			entityManager.getTransaction().begin();
 
-			// uso l'injection per il dao
 			genereDAO.setEntityManager(entityManager);
+			
 
-			// eseguo quello che realmente devo fare
+			List<Cd> listaCd = cdServiceInstance.cercaCdPerGenere(genereInstance);
+			if(!listaCd.isEmpty())
+				for (Cd cdItem : listaCd) {
+					cdItem.setGeneri(null);
+					cdServiceInstance.aggiorna(cdItem);
+				}
+				
 			genereDAO.delete(genereInstance);
 
 			entityManager.getTransaction().commit();

@@ -109,13 +109,9 @@ public class CdServiceImpl implements CdService {
 		EntityManager entityManager = EntityManagerUtil.getEntityManager();
 
 		try {
-			// questo è come il MyConnection.getConnection()
 			entityManager.getTransaction().begin();
-
-			// uso l'injection per il dao
 			cdDAO.setEntityManager(entityManager);
-
-			// eseguo quello che realmente devo fare
+			
 			cdDAO.delete(cdInstance);
 
 			entityManager.getTransaction().commit();
@@ -195,6 +191,26 @@ public class CdServiceImpl implements CdService {
 			entityManager.getTransaction().rollback();
 			e.printStackTrace();
 			throw e;
+		}
+
+	}
+
+	@Override
+	public List<Cd> cercaCdPerGenere(Genere genereInput) {
+		EntityManager entityManager = EntityManagerUtil.getEntityManager();
+
+		try {
+			// uso l'injection per il dao
+			cdDAO.setEntityManager(entityManager);
+
+			// eseguo quello che realmente devo fare
+			return cdDAO.findAllByGenere(genereInput);
+
+		} catch (Exception e) {
+			e.printStackTrace();
+			throw e;
+		} finally {
+			entityManager.close();
 		}
 
 	}

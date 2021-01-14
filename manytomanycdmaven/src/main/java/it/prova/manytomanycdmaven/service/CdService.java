@@ -2,6 +2,7 @@ package it.prova.manytomanycdmaven.service;
 
 import java.util.List;
 
+
 import it.prova.manytomanycdmaven.dao.cd.CdDAO;
 import it.prova.manytomanycdmaven.model.Cd;
 import it.prova.manytomanycdmaven.model.Genere;
@@ -21,6 +22,9 @@ public interface CdService {
 	public void aggiungiGenere(Cd cdInstance, Genere genereInstance) throws Exception;
 	
 	public void creaECollegaCdEGenere(Cd cdTransientInstance, Genere genereTransientInstance) throws Exception;
+	
+	public List<Cd> cercaCdPerGenere(Genere genereInput);
+
 
 	// per injection
 	public void setCdDAO(CdDAO cdDAO);
