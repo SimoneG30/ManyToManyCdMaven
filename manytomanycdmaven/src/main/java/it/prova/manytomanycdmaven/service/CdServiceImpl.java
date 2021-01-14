@@ -182,7 +182,7 @@ public class CdServiceImpl implements CdService {
 			//sfruttare i metodi addTo o removeFrom dentro Cd:
 			//GenereDAO genereDAO = MyDaoFactory.getGenereDAOInstance();
 			//genereDAO.setEntityManager(entityManager);
-			//genereDAO.insert(genereTransientInstance);
+//			genereDAO.insert(genereTransientInstance);
 			//cdTransientInstance.addToGeneri(genereTransientInstance);
 			//in questo caso però se il genere è già presente non ne tiene conto e inserirebbe duplicati, ma è logico
 			//****************************************************************

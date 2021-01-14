@@ -1,8 +1,10 @@
 package it.prova.manytomanycdmaven.model;
 
+import java.text.SimpleDateFormat;
 import java.util.HashSet;
 import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -56,4 +58,9 @@ public class Genere {
 		this.cds = cds;
 	}
 
+	@Override
+	public String toString() {
+		return "Genere [id=" + id + ", descrizione=" + descrizione + "]";
+	}
+	
 }

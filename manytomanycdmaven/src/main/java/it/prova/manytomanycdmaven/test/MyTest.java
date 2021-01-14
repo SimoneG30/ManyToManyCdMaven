@@ -85,20 +85,92 @@ public class MyTest {
 			//a prescindere della presenza dei Cascade. Se mettiamo CascadeType.ALL o REMOVE...
 			//DISASTRO!!!
 			//*********************************************************************************
-			System.out.println("RIMUOVIAMO UN CD E VEDIAMO COSA ACCADE AI GENERI...");
-			Long idCdDaCaricarePerRimozione = 34L;
-			Cd cdDaCaricarePerRimozione = cdServiceInstance.caricaSingoloElemento(idCdDaCaricarePerRimozione);
-			if(cdDaCaricarePerRimozione != null) {
-				System.out.println("Cd caricato con successo: "+cdDaCaricarePerRimozione);
-				//rimuovo
-				cdServiceInstance.rimuovi(cdDaCaricarePerRimozione);
-			}else
-				System.out.println("Cd non trovato.");
-			System.out.println("...end...");
+//			System.out.println("RIMUOVIAMO UN CD E VEDIAMO COSA ACCADE AI GENERI...");
+//			Long idCdDaCaricarePerRimozione = 34L;
+//			Cd cdDaCaricarePerRimozione = cdServiceInstance.caricaSingoloElemento(idCdDaCaricarePerRimozione);
+//			if(cdDaCaricarePerRimozione != null) {
+//				System.out.println("Cd caricato con successo: "+cdDaCaricarePerRimozione);
+//				//rimuovo
+//				cdServiceInstance.rimuovi(cdDaCaricarePerRimozione);
+//			}else
+//				System.out.println("Cd non trovato.");
+//			System.out.println("...end...");
 			
-			//TODO: TESTARE TUTTO IL CRUD
+//			//TODO: TESTARE TUTTO IL CRUD
+//			System.out.println("\n TEST CRUD \n");
 			
+//			System.out.println("\n LISTA GENERI \n");
+//			for (Genere genereItem : genereServiceInstance.listAll()) {
+//				System.out.println(genereItem);
+//			}
+			
+//			System.out.println("\n LISTA CD \n");
+//			for (Cd cdItem : cdServiceInstance.listAll()) {
+//				System.out.println(cdItem);
+//			}
+			
+//			System.out.println("\n SINGOLO GENERE \n");
+//			Long IdGenereSingolo = 1L;
+//			System.out.println("Carica genere con id.."+IdGenereSingolo);
+//			Genere genereDaCaricare = genereServiceInstance.caricaSingoloElemento(IdGenereSingolo);
+//			if(genereDaCaricare != null)
+//				System.out.println("Genere caricato con successo: "+genereDaCaricare);
+//			else
+//				System.out.println("Genere non trovato.");
+			
+//			System.out.println("\n SINGOLO CD \n");
+//			Long idCdSingolo = 1L;
+//			System.out.println("Carica cd con id.."+idCdSingolo);
+//			Cd cdDaCaricare = cdServiceInstance.caricaSingoloElemento(idCdSingolo);
+//			if(cdDaCaricare != null)
+//				System.out.println("Cd caricato con successo: "+cdDaCaricare);
+//			else
+//				System.out.println("Cd non trovato.");
+			
+//			System.out.println("\n UPDATE GENERE \n");
+//			Genere generePresoDaDb = genereServiceInstance.listAll().stream().findFirst().orElse(null);
+//			if (generePresoDaDb != null) {
+//				System.out.println(
+//						"descrizione attuale del genere: " + generePresoDaDb.getDescrizione());
+//				String nuovaDescrizione = "Reggae";
+//				generePresoDaDb.setDescrizione(nuovaDescrizione);
+//				genereServiceInstance.aggiorna(generePresoDaDb);
+//				System.out.println(
+//						"descrizione aggiornata del genere: " + generePresoDaDb.getDescrizione());
+//			}
+			
+//			System.out.println("\n UPDATE CD \n");
+//			Cd cdPresoDaDb = cdServiceInstance.listAll().stream().findFirst().orElse(null);
+//			if (cdPresoDaDb != null) {
+//				System.out.println(
+//						"titolo attuale del cd: " + cdPresoDaDb.getTitolo());
+//				String nuovoTitolo = "Hits of 2021";
+//				cdPresoDaDb.setTitolo(nuovoTitolo);
+//				cdServiceInstance.aggiorna(cdPresoDaDb);
+//				System.out.println(
+//						"titolo aggiornato del cd: " + cdPresoDaDb.getTitolo());
+//			}
+			
+//			System.out.println("\n NUOVO GENERE \n");
+//			Genere nuovoGenere = new Genere("Hip-Hop");
+//			genereServiceInstance.inserisciNuovo(nuovoGenere);
+//			if(genereServiceInstance.caricaSingoloElemento(nuovoGenere.getId()) != null)
+//				System.out.println("Nuovo Genere inserito: "+nuovoGenere);
+			
+//			System.out.println("\n NUOVO CD \n");
+//			Cd cdNuovoDaInserire = new Cd("Nuovo CD","Autore Nuovo",new SimpleDateFormat("dd/MM/yyyy").parse("24/09/2019"));
+//			cdServiceInstance.inserisciNuovo(cdNuovoDaInserire);
+//			if(cdServiceInstance.caricaSingoloElemento(cdNuovoDaInserire.getId()) != null)
+//				System.out.println("Nuovo CD inserito: "+cdNuovoDaInserire);
 
+			
+//			Cd cdDaDb = cdServiceInstance.caricaSingoloElemento(1L);
+//
+//			Genere genereDaDb = genereServiceInstance.listAll().stream().findFirst().orElse(null);
+//			if (cdDaDb != null && genereDaDb != null) {
+//				genereServiceInstance.aggiungiCd(genereDaDb, cdDaDb);
+//			}
+			
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {

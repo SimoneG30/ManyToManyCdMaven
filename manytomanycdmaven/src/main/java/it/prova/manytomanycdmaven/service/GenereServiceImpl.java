@@ -5,6 +5,8 @@ import java.util.List;
 import javax.persistence.EntityManager;
 
 import it.prova.manytomanycdmaven.dao.EntityManagerUtil;
+import it.prova.manytomanycdmaven.dao.MyDaoFactory;
+import it.prova.manytomanycdmaven.dao.cd.CdDAO;
 import it.prova.manytomanycdmaven.dao.genere.GenereDAO;
 import it.prova.manytomanycdmaven.model.Cd;
 import it.prova.manytomanycdmaven.model.Genere;
@@ -144,7 +146,24 @@ public class GenereServiceImpl implements GenereService {
 
 	@Override
 	public void aggiungiCd(Genere genereInstance, Cd cdInstance) throws Exception {
-		
+		// questo è come una connection
+				EntityManager entityManager = EntityManagerUtil.getEntityManager();
+
+				try {
+					entityManager.getTransaction().begin();
+
+					// uso l'injection per il dao
+					genereDAO.setEntityManager(entityManager);					
+					cdInstance = entityManager.merge(cdInstance);
+					genereInstance = entityManager.merge(genereInstance);
+					cdInstance.addToGeneri(genereInstance);
+
+					entityManager.getTransaction().commit();
+				} catch (Exception e) {
+					entityManager.getTransaction().rollback();
+					e.printStackTrace();
+					throw e;
+				}
 	}
 
 	@Override
