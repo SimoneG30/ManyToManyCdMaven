@@ -170,16 +170,16 @@ public class MyTest {
 //				genereServiceInstance.aggiungiCd(genereDaDb, cdDaDb);
 //			}
 			
-//			System.out.println("\n DELETE GENERE \n");
-//			Long idGenereDaEliminare = 3L;
-//			Genere genereCaricato = genereServiceInstance.caricaSingoloElemento(idGenereDaEliminare);
-//			if(genereCaricato != null) {
-//				System.out.println("Genere caricato: "+genereCaricato);
-//				genereServiceInstance.rimuovi(genereCaricato);
-//				System.out.println("Rimozione Genere avvenuta con successo");
-//			} else {
-//				System.out.println("Nessun Genere trovato");
-//			}
+			System.out.println("\n DELETE GENERE \n");
+			Long idGenereDaEliminare = 2L;
+			Genere genereCaricato = genereServiceInstance.caricaSingoloElemento(idGenereDaEliminare);
+			if(genereCaricato != null) {
+				System.out.println("Genere caricato: "+genereCaricato);
+				genereServiceInstance.rimuovi(genereCaricato);
+				System.out.println("Rimozione Genere avvenuta con successo");
+			} else {
+				System.out.println("Nessun Genere trovato");
+			}
 			
 //			System.out.println("\n DELETE CD \n");
 //			Long idCdDaEliminare = 3L;

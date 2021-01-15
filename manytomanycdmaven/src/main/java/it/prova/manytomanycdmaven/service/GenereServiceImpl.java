@@ -6,6 +6,8 @@ import javax.persistence.EntityManager;
 
 
 import it.prova.manytomanycdmaven.dao.EntityManagerUtil;
+import it.prova.manytomanycdmaven.dao.cd.CdDAO;
+import it.prova.manytomanycdmaven.dao.cd.CdDAOImpl;
 import it.prova.manytomanycdmaven.dao.genere.GenereDAO;
 import it.prova.manytomanycdmaven.model.Cd;
 import it.prova.manytomanycdmaven.model.Genere;
@@ -104,20 +106,21 @@ public class GenereServiceImpl implements GenereService {
 	public void rimuovi(Genere genereInstance) throws Exception {
 		// questo è come una connection
 		EntityManager entityManager = EntityManagerUtil.getEntityManager();
-
+		CdDAO cdDAO = new CdDAOImpl();
 		try {
 			entityManager.getTransaction().begin();
 
-			genereDAO.setEntityManager(entityManager);
+			cdDAO.setEntityManager(entityManager);
 			
 
-			List<Cd> listaCd = cdServiceInstance.cercaCdPerGenere(genereInstance);
+			List<Cd> listaCd = cdDAO.findAllByGenere(genereInstance);
 			if(!listaCd.isEmpty())
 				for (Cd cdItem : listaCd) {
-					cdItem.setGeneri(null);
-					cdServiceInstance.aggiorna(cdItem);
+					cdItem.getGeneri().remove(genereInstance);
+					cdDAO.update(cdItem);
 				}
-				
+            genereDAO.setEntityManager(entityManager);
+
 			genereDAO.delete(genereInstance);
 
 			entityManager.getTransaction().commit();
